@@ -16,7 +16,7 @@ const swipe = new ZingTouch.Swipe({
 
 touchRegion.bind(touchArea, tap, (e) => {
     const {interval} = e.detail
-    const result = `Tap: interval=${interval}ms.`
+    const result = `Event Tap: interval=${interval}ms.`
     header.textContent = result
     console.log(result);
 })
@@ -25,24 +25,35 @@ touchRegion.bind(touchArea, swipe, (e) => {
     const {velocity, currentDirection} = e.detail.data[0]
     const velocityRounded = parseFloat(velocity).toFixed(3)
     const direction = getDirection(currentDirection)
-    let result = `Swipe: velocity=${velocityRounded}, direction=${direction}`
+    let result = `Event Swipe: velocity=${velocityRounded}, direction=${direction}`
     header.textContent = result
     console.log(result);
 })
 
 function getDirection(deg) {
-    let direction
-    if (deg >= 45 && deg <= 135) {
-        direction = 'top'
+    let direction = []
+    const right = 0
+    const top = 90
+    const left = 180
+    const bottom = 270
+
+    const sector = 67.5
+
+    if (deg >= 360 - sector  || deg <= right + sector) {
+        direction.push('right')
     }
-    if (deg > 135 && deg < 225) {
-        direction = 'left'
+    
+    if (deg >= top - sector  && deg <= top + sector) {
+        direction.push('top')
     }
-    if (deg >= 225 && deg <= 315) {
-        direction = 'down'
+
+    if (deg >= left - sector  && deg <= left + sector) {
+        direction.push('left')
     }
-    if (deg > 315  || deg < 45) {
-        direction = 'right'
+
+    if (deg >= bottom - sector  && deg <= bottom + sector) {
+        direction.push('bottom')
     }
+
     return direction
 }

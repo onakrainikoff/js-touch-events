@@ -5,12 +5,11 @@
 }
 
 body {
-    background-color: rgba(0, 128, 128, .5);
+    background: linear-gradient(to right bottom, #b9deed, #efefef);
     height: 100vh;
 }
 
 header {
     height: 50px;
-    background-color: rgba(255, 165, 0, .9);
     padding: 10px;
 }
