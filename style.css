@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(0, 128, 128, .5);
+    height: 100vh;
+}
+
+header {
+    height: 50px;
+    background-color: rgba(255, 165, 0, .9);
+    padding: 10px;
+}
